@@ -1,0 +1,209 @@
+/* Styles for the Banner component */
+.banner {
+  position: relative;
+  padding: 60px 80px;
+  text-align: center;
+  color: #333;
+  width: 100%;
+  height: 40vh;
+  max-height: 500px;
+  min-height: 400px;
+  font-family: 'Bahnschrift', Arial, sans-serif;
+}
+
+.banner-content {
+  max-width: 800px;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.banner h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #2d4a3a;
+}
+
+.banner h2 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.banner p {
+  font-size: 22px;
+  margin-bottom: 30px;
+  color: #2d4a3a;
+}
+
+.banner-button {
+  background-color: #2e4d2e;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.banner-button:hover {
+  background-color: #3a5e3a;
+}
+
+.cup-banner {
+  position: absolute;
+  z-index: 0;
+  bottom: 1vh;
+  right: 0;
+  width: 80vw;
+  height: 85%;
+}
+
+.shape-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 110%;
+}
+
+/* Адаптивний дизайн */
+@media (max-width: 768px) {
+  .banner {
+    padding: 60px 30px 40px 30px;
+    height: 45vh;
+    max-height: 350px;
+    min-height: 280px;
+  }
+  
+  .banner-content {
+    max-width: 55%;
+    padding-left: 0;
+    margin-top: 20px;
+  }
+    .banner-content h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+  }
+  
+  .banner-content p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .cup-banner {
+    width: 85vw;
+    height: 75%;
+    bottom: 2vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner {
+    padding: 40px 20px 25px 20px;
+    height: 35vh;
+    max-height: 280px;
+    min-height: 220px;
+  }
+    .banner-content {
+    max-width: 50%;
+    padding-left: 0;
+    margin-top: 30px;
+  }
+  
+  .banner-content h1 {
+    font-size: 28px;
+    margin-bottom: 12px;
+    line-height: 1.2;
+    margin-top: 10px;
+  }
+  
+  
+  .banner-button {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+  
+  .cup-banner {
+    width: 75vw;
+    height: 80%;
+    bottom: 2vh;
+  }
+}
+
+@media (max-width: 360px) {
+  .banner {
+    height: 30vh;
+    max-height: 250px;
+    min-height: 200px;
+    padding: 40px 15px 20px 15px;
+  }
+    .banner-content {
+    margin-top: 40px;
+  }
+  
+  .banner-content h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    line-height: 1.2;
+    margin-top: 15px;
+  }
+  
+  .banner-button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  .cup-banner {
+     width: 75vw;
+    height: 80%;
+    bottom: 2vh;
+  }
+}
+
+@media (max-width: 390px) {
+  .banner-content h1 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    line-height: 1.1;
+    word-wrap: break-word;
+  }
+  
+  .banner-content p {
+    font-size: 12px;
+    margin-bottom: 15px;
+    line-height: 1.3;
+  }
+  
+  .banner-content {
+    max-width: 48%;
+    margin-top: 35px;
+  }
+}
+
+@media (max-width: 320px) {
+  .banner-content h1 {
+    font-size: 18px;
+    margin-bottom: 6px;
+    line-height: 1.0;
+  }
+  
+  .banner-content p {
+    font-size: 11px;
+    margin-bottom: 12px;
+  }
+  
+  .banner-content {
+    max-width: 45%;
+    margin-top: 30px;
+  }
+  
+  .banner-button {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+}
