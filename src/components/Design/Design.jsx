@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import './Design.css';
-import formImg from '../../assets/form.png';
+import nameIcon from '../../assets/name-icon.png';
+import phoneIcon from '../../assets/phone.png';
+import emailIcon from '../../assets/E-mail.png';
+import sizeIcon from '../../assets/size-icon.png';
+import quantityIcon from '../../assets/quantity-icon.png';
+import uploadIcon from '../../assets/upload-icon.png';
 
 const Design = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -9,7 +14,6 @@ const Design = () => {
     name: '',
     phone: '',
     email: '',
-    productType: '',
     size: '',
     quantity: ''
   });
@@ -45,7 +49,9 @@ const Design = () => {
         return;
       }
     }
-  };  const handleSubmit = async (e) => {
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
@@ -61,14 +67,16 @@ const Design = () => {
       formDataToSend.append('name', formData.name);
       formDataToSend.append('phone', formData.phone);
       formDataToSend.append('email', formData.email);
-      formDataToSend.append('productType', formData.productType);
+      formDataToSend.append('productType', 'двошарові стакани');
       formDataToSend.append('size', formData.size);
       formDataToSend.append('quantity', formData.quantity);
       formDataToSend.append('message', `Нове замовлення від ${formData.name}`);
       
       if (selectedFile) {
         formDataToSend.append('file', selectedFile);
-      }      // Відправка через Getform.io (правильний URL з панелі)
+      }
+
+      // Відправка через Getform.io
       const response = await fetch('https://getform.io/f/bkknevlb', {
         method: 'POST',
         body: formDataToSend
@@ -82,7 +90,7 @@ const Design = () => {
 • Ім'я: ${formData.name}
 • Телефон: ${formData.phone}
 • Email: ${formData.email}
-• Продукт: ${formData.productType || 'Не вказано'}
+• Продукт: Двошарові стакани
 • Розмір: ${formData.size || 'Не вказано'}
 • Кількість: ${formData.quantity || 'Не вказано'}${fileInfo}
 
@@ -93,7 +101,6 @@ const Design = () => {
           name: '',
           phone: '',
           email: '',
-          productType: '',
           size: '',
           quantity: ''
         });
@@ -107,9 +114,7 @@ const Design = () => {
     } finally {
       setIsLoading(false);
     }
-  };
-
-  return (
+  };return (
     <section id="design" className="design-section">
       <div className="design-container">
         <form 
@@ -118,76 +123,101 @@ const Design = () => {
           encType="multipart/form-data"
           method="post"
         >
-          <img src={formImg} alt="Форма замовлення" className="form-background" />
-          <div className="form-inputs">            <input 
+          <h1 className="form-title">Дизайн для двошарових стаканів</h1>
+          <p className="form-subtitle">Замовляйте друк вашого бренду на паперових стаканах</p>
+            <div className="form-group">
+            <label htmlFor="name" className="form-label">
+              <img src={nameIcon} alt="Name" className="form-icon" />
+              Ваше ім'я *
+            </label>
+            <input 
               type="text" 
               name="name"
-              className="form-input input-name" 
-              placeholder=""
+              id="name"
+              className="form-input" 
+              placeholder="Введіть ваше ім'я"
               value={formData.name}
               onChange={handleInputChange}
               required
             />
+          </div>          <div className="form-group">
+            <label htmlFor="phone" className="form-label">
+              <img src={phoneIcon} alt="Phone" className="form-icon" />
+              Номер телефону *
+            </label>
             <input 
               type="tel" 
               name="phone"
-              className="form-input input-phone" 
-              placeholder=""
+              id="phone"
+              className="form-input" 
+              placeholder="+380 XX XXX XX XX"
               value={formData.phone}
               onChange={handleInputChange}
               required
             />
+          </div>          <div className="form-group">
+            <label htmlFor="email" className="form-label">
+              <img src={emailIcon} alt="Email" className="form-icon" />
+              E-mail *
+            </label>
             <input 
               type="email" 
               name="email"
-              className="form-input input-email" 
-              placeholder=""
+              id="email"
+              className="form-input" 
+              placeholder="your@email.com"
               value={formData.email}
               onChange={handleInputChange}
               required
             />
-            <select 
-              name="productType"
-              className="form-input input-product" 
-              value={formData.productType}
-              onChange={handleInputChange}
-            >
-              <option value=""></option>
-              <option value="одношарові стакани">одношарові стакани</option>
-              <option value="двошарові стакани">двошарові стакани</option>
-              <option value="гофра">гофра</option>
-              <option value="тарілка">тарілка</option>
-            </select>
-            <select 
-              name="size"
-              className="form-input input-size" 
-              value={formData.size}
-              onChange={handleInputChange}
-            >
-              <option value=""></option>
-              <option value="110мл">110мл</option>
-              <option value="170мл">170мл</option>
-              <option value="180мл">180мл</option>
-              <option value="250мл">250мл</option>
-              <option value="275мл">275мл</option>
-              <option value="350мл">350мл</option>
-              <option value="400мл">400мл</option>
-              <option value="500мл">500мл</option>
-            </select>
-            <input 
-              type="number" 
-              name="quantity"
-              className="form-input input-quantity" 
-              placeholder=""
-              min="1"
-              value={formData.quantity}
-              onChange={handleInputChange}
-            />
-              {/* Поле для завантаження файлу */}
-            <div className="file-upload-container">
-              <label htmlFor="attachment" className="file-upload-label">
-                
+          </div>
+
+          <div className="form-row">
+            <div className="form-group form-group-half">              <label htmlFor="size" className="form-label">
+                <img src={sizeIcon} alt="Size" className="form-icon" />
+                Розмір
               </label>
+              <select 
+                name="size"
+                id="size"
+                className="form-select" 
+                value={formData.size}
+                onChange={handleInputChange}
+              >
+                <option value="">Оберіть розмір</option>
+                <option value="110мл">110мл</option>
+                <option value="170мл">170мл</option>
+                <option value="180мл">180мл</option>
+                <option value="250мл">250мл</option>
+                <option value="275мл">275мл</option>
+                <option value="350мл">350мл</option>
+                <option value="400мл">400мл</option>
+                <option value="500мл">500мл</option>
+              </select>
+            </div>
+
+            <div className="form-group form-group-half">              <label htmlFor="quantity" className="form-label">
+                <img src={quantityIcon} alt="Quantity" className="form-icon" />
+                Кількість
+              </label>
+              <input 
+                type="number" 
+                name="quantity"
+                id="quantity"
+                className="form-input" 
+                placeholder="Введіть кількість"
+                min="1"
+                value={formData.quantity}
+                onChange={handleInputChange}
+              />
+            </div>
+          </div>
+
+          <div className="form-group">            <label htmlFor="attachment" className="form-label">
+              <img src={uploadIcon} alt="Upload" className="form-icon" />
+              Завантажити файли у векторі
+            </label>
+            <div className="file-upload">
               <input 
                 type="file" 
                 name="attachment"
@@ -196,22 +226,25 @@ const Design = () => {
                 onChange={handleFileChange}
                 accept=".jpg,.jpeg,.png,.gif,.pdf,.txt"
               />
+              <label htmlFor="attachment" className="file-label">
+                <span className="upload-icon">📁</span>
+                {selectedFile ? selectedFile.name : 'Завантажити файл'}
+              </label>
               {selectedFile && (
                 <div className="file-info">
-                  <span className="file-name">📄 {selectedFile.name}</span>
                   <span className="file-size">({(selectedFile.size / 1024).toFixed(1)} KB)</span>
                 </div>
               )}
-            </div>            {/* Прихований input для timestamp - не потрібен */}
-            
-            {/* Кнопка відправки */}            <button
-              type="submit" 
-              className="submit-button"
-              disabled={isLoading}
-            >
-              {isLoading ? '⏳ Відправляємо...' : '📧 Надіслати замовлення'}
-            </button>
+            </div>
           </div>
+
+          <button
+            type="submit" 
+            className="submit-button"
+            disabled={isLoading}
+          >
+            {isLoading ? '⏳ Відправляємо...' : 'Надіслати замовлення'}
+          </button>
         </form>
       </div>
     </section>
